@@ -8,12 +8,21 @@ def get_computer_pick():
   random_number = random.randint(0,2)
   return options[random_number]
 
+def was_game_started():
+  return True if user_wins > 0 or computer_wins>0 else False
+
+def did_the_user_logout(user_input):
+  return True if user_input == 'q' else False
+
+
 while True:
-  if user_wins > 0 or computer_wins>0:
+  if was_game_started():
     print('You won', user_wins, 'games untill now')
     print('The computer won', computer_wins, 'games untill now')
+
   user_input = input('Type Rock/Paper/Scissors or Q to quit: ').lower()
-  if user_input == 'q':
+
+  if did_the_user_logout(user_input):
    break
 
   if user_input not in options:
